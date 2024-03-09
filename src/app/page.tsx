@@ -1,10 +1,7 @@
-import Image from "next/image";
+import Board from "@/components/board";
 
 export default function Home() {
   return (
-    <div>
-      <h1>Test app</h1>
-      <div>this is a test app.</div>
-    </div>
+    <Board />
   );
 }
