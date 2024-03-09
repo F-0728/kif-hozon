@@ -1,5 +1,5 @@
 const Komadai = () => {
-    // ここに駒台を作ります
+    return <div className="komadai" />;
 }
 
 export default Komadai;
