@@ -18,3 +18,22 @@
   height: 40px;
   border: 1px solid black;
 }
+
+.komadai {
+  width: 160px;
+  height: 160px;
+  border: 1px solid black;
+}
+
+.fullGame {
+  display: flex;
+  align-items: center;
+}
+
+.fullGame > :first-child {
+  align-self: flex-start;
+}
+
+.fullGame > :last-child {
+  align-self: flex-end;
+}
