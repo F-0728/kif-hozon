@@ -9,6 +9,8 @@ const Board = () => {
                     <div key={row} className="row">
                         {cols.map((col) => {
                             return (
+                                // ここをcellではなくマス目(gridコンポーネント)に変えます
+                                // <Grid />
                                 <div key={col} className="cell"></div>
                             );
                         })}
