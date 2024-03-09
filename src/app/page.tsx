@@ -1,11 +1,99 @@
+"use client";
+
 import Board from "@/components/board";
 import Komadai from "@/components/komadai";
+import { useState } from "react";
+import { pieceType } from "@/components/piece";
 
 export default function Home() {
+  const [pieces, setPieces] = useState<pieceType[]>([
+    { kind: 2, rotate: true },
+    { kind: 3, rotate: true },
+    { kind: 4, rotate: true },
+    { kind: 5, rotate: true },
+    { kind: 8, rotate: true },
+    { kind: 5, rotate: true },
+    { kind: 4, rotate: true },
+    { kind: 3, rotate: true },
+    { kind: 2, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 7, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 6, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 1, rotate: true },
+    { kind: 1, rotate: true },
+    { kind: 1, rotate: true },
+    { kind: 1, rotate: true },
+    { kind: 1, rotate: true },
+    { kind: 1, rotate: true },
+    { kind: 1, rotate: true },
+    { kind: 1, rotate: true },
+    { kind: 1, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 0, rotate: true },
+    { kind: 1, rotate: false },
+    { kind: 1, rotate: false },
+    { kind: 1, rotate: false },
+    { kind: 1, rotate: false }, 
+    { kind: 1, rotate: false },
+    { kind: 1, rotate: false },
+    { kind: 1, rotate: false },
+    { kind: 1, rotate: false },
+    { kind: 1, rotate: false },
+    { kind: 0, rotate: false },
+    { kind: 6, rotate: false },
+    { kind: 0, rotate: false },
+    { kind: 0, rotate: false },
+    { kind: 0, rotate: false },
+    { kind: 0, rotate: false },
+    { kind: 0, rotate: false },
+    { kind: 7, rotate: false },
+    { kind: 0, rotate: false },
+    { kind: 2, rotate: false },
+    { kind: 3, rotate: false },
+    { kind: 4, rotate: false },
+    { kind: 5, rotate: false },
+    { kind: 8, rotate: false },
+    { kind: 5, rotate: false },
+    { kind: 4, rotate: false },
+    { kind: 3, rotate: false },
+    { kind: 2, rotate: false }, 
+  ]);
+
   return (
     <div className="fullGame">
       <Komadai />
-      <Board />
+      <Board pieces={pieces} />
       <Komadai />
     </div>
   );
