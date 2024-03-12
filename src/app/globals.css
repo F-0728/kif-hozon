@@ -6,6 +6,9 @@
   display: flex;
   flex-wrap: wrap;
   width: 360px;
+  margin: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .row {
@@ -19,23 +22,23 @@
   border: 1px solid black;
 }
 
-.komadai {
-  width: 160px;
-  height: 160px;
+.komadai-sente {
+  width: 120px;
+  height: 120px;
   border: 1px solid black;
+  align-self: flex-end;
+}
+
+.komadai-gote {
+  width: 120px;
+  height: 120px;
+  border: 1px solid black;
+  align-self: flex-start;
 }
 
 .fullGame {
   display: flex;
   align-items: center;
-}
-
-.fullGame> :first-child {
-  align-self: flex-start;
-}
-
-.fullGame> :last-child {
-  align-self: flex-end;
 }
 
 .piece {
