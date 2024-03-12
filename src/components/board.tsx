@@ -112,15 +112,35 @@ const Board = () => {
                         style={{ transform: piece.rotate ? "rotateZ(180deg)" : "rotateZ(0deg)" }}
                         onClick={() => {
                             if (clicked) {
-                                setPieces(pieces.map((p) => {
-                                    if (p.dan === clicked.dan && p.suji === clicked.suji) {
-                                        return piece;
-                                    } else if (p.dan === piece.dan && p.suji === piece.suji) {
-                                        return clicked;
-                                    } else {
-                                        return p;
-                                    }
-                                }));
+                                // pieceが空白である場合
+                                if (piece.kind === 0) {
+                                    setPieces(pieces.map((p) => {
+                                        if (p.dan === clicked.dan && p.suji === clicked.suji) {
+                                            return piece;
+                                        } else if (p.dan === piece.dan && p.suji === piece.suji) {
+                                            return clicked;
+                                        } else {
+                                            return p;
+                                        }
+                                    }));
+                                }
+                                // 自分の駒をクリックした場合
+                                else if (piece.rotate === clicked.rotate) {
+                                    setPieces(pieces);
+                                }
+                                // 相手の駒をクリックした場合
+                                else {
+                                    setPieces(pieces.map((p) => {
+                                        if (p.dan === clicked.dan && p.suji === clicked.suji) {
+                                            return { dan: piece.dan, suji: piece.suji, kind: 0, rotate: false };
+                                        } else if (p.dan === piece.dan && p.suji === piece.suji) {
+                                            return clicked;
+                                        }
+                                        else {
+                                            return p;
+                                        }
+                                    }));
+                                }
                                 setClicked(null);
                             } else {
                                 setClicked(piece);
