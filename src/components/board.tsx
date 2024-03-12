@@ -120,7 +120,7 @@ const Board = () => {
                 if (clicked) {
                   // pieceが空白である場合
                   if (piece.kind === 0) {
-                    if (clicked.dan === 10 && clicked.suji === 10) { // 打つ
+                    if (clicked.dan > 9 && clicked.suji > 9) { // 打つ
                       setPieces(pieces.map((p) => {
                         if (p.dan === piece.dan && p.suji === piece.suji) {
                           setClicked({ dan: piece.dan, suji: piece.suji, kind: clicked.kind, rotate: clicked.rotate });
