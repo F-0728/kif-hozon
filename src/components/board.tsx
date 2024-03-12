@@ -90,6 +90,9 @@ const Board = () => {
   const [smochigoma, setSMochigoma] = useState<pieceType[]>([]);
   const [gmochigoma, setGMochigoma] = useState<pieceType[]>([]);
 
+  console.log(smochigoma);
+  console.log(gmochigoma);
+
   return (
     <>
       <div className="komadai-gote">
@@ -99,7 +102,7 @@ const Board = () => {
               key={gmochigoma.indexOf(koma)}
               style={{ transform: "rotateZ(180deg)" }}
               onClick={() => {
-
+                setClicked(koma);
               }}>
               {pieceName[koma.kind]}
             </button>)
@@ -117,15 +120,31 @@ const Board = () => {
                 if (clicked) {
                   // pieceが空白である場合
                   if (piece.kind === 0) {
-                    setPieces(pieces.map((p) => {
-                      if (p.dan === clicked.dan && p.suji === clicked.suji) {
-                        return piece;
-                      } else if (p.dan === piece.dan && p.suji === piece.suji) {
-                        return clicked;
+                    if (clicked.dan === 10 && clicked.suji === 10) { // 打つ
+                      setPieces(pieces.map((p) => {
+                        if (p.dan === piece.dan && p.suji === piece.suji) {
+                          setClicked({ dan: piece.dan, suji: piece.suji, kind: clicked.kind, rotate: clicked.rotate });
+                          return clicked;
+                        } else {
+                          return p;
+                        }
+                      }));
+                      if (clicked.rotate) {
+                        setGMochigoma(gmochigoma.filter((p) => p.kind !== clicked.kind));
                       } else {
-                        return p;
+                        setSMochigoma(smochigoma.filter((p) => p.kind !== clicked.kind));
                       }
-                    }));
+                    } else { // 指す
+                      setPieces(pieces.map((p) => {
+                        if (p.dan === clicked.dan && p.suji === clicked.suji) {
+                          return piece;
+                        } else if (p.dan === piece.dan && p.suji === piece.suji) {
+                          return clicked;
+                        } else {
+                          return p;
+                        }
+                      }));
+                    }
                   }
                   // 自分の駒をクリックした場合
                   else if (piece.rotate === clicked.rotate) {
@@ -138,9 +157,9 @@ const Board = () => {
                         return { dan: piece.dan, suji: piece.suji, kind: 0, rotate: false };
                       } else if (p.dan === piece.dan && p.suji === piece.suji) {
                         if (piece.rotate === true) {
-                          setSMochigoma([...smochigoma, piece]);
+                          setSMochigoma([...smochigoma, { dan: 10, suji: 10, kind: piece.kind, rotate: false }]);
                         } else {
-                          setGMochigoma([...gmochigoma, piece]);
+                          setGMochigoma([...gmochigoma, { dan: 20, suji: 20, kind: piece.kind, rotate: true }]);
                         }
                         return clicked;
                       }
@@ -165,7 +184,7 @@ const Board = () => {
             <button
               key={smochigoma.indexOf(koma)}
               onClick={() => {
-
+                setClicked(koma);
               }}>
               {pieceName[koma.kind]}
             </button>)
