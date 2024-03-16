@@ -123,8 +123,7 @@ const Board = () => {
                     if (clicked.dan > 9 && clicked.suji > 9) { // 打つ
                       setPieces(pieces.map((p) => {
                         if (p.dan === piece.dan && p.suji === piece.suji) {
-                          setClicked({ dan: piece.dan, suji: piece.suji, kind: clicked.kind, rotate: clicked.rotate });
-                          return clicked;
+                          return { dan: piece.dan, suji: piece.suji, kind: clicked.kind, rotate: clicked.rotate };
                         } else {
                           return p;
                         }
