@@ -90,9 +90,6 @@ const Board = () => {
   const [smochigoma, setSMochigoma] = useState<pieceType[]>([]);
   const [gmochigoma, setGMochigoma] = useState<pieceType[]>([]);
 
-  console.log(smochigoma);
-  console.log(gmochigoma);
-
   return (
     <>
       <div className="komadai-gote">
@@ -149,6 +146,20 @@ const Board = () => {
                           return p;
                         }
                       }));
+                      if (!clicked.rotate) {
+                        if (piece.dan < 4) {
+                          let nari = confirm("成りますか？");
+                          if (nari) {
+                            setPieces(pieces.map((p) => {
+                              if (p.dan === piece.dan && p.suji === piece.suji) {
+                                return { dan: piece.dan, suji: piece.suji, kind: clicked.kind + 1, rotate: clicked.rotate };
+                              } else {
+                                return p;
+                              }
+                            }));
+                          }
+                        }
+                      }
                     }
                   }
                   // 自分の駒をクリックした場合
