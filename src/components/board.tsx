@@ -129,9 +129,15 @@ const Board = () => {
                         }
                       }));
                       if (clicked.rotate) {
-                        setGMochigoma(gmochigoma.filter((p) => p.kind !== clicked.kind));
+                        const index = gmochigoma.findIndex((p) => p.kind === clicked.kind);
+                        if (index !== -1) {
+                          setGMochigoma(gmochigoma.slice(0, index).concat(gmochigoma.slice(index + 1)));
+                        }
                       } else {
-                        setSMochigoma(smochigoma.filter((p) => p.kind !== clicked.kind));
+                        const index = smochigoma.findIndex((p) => p.kind === clicked.kind);
+                        if (index !== -1) {
+                          setSMochigoma(smochigoma.slice(0, index).concat(smochigoma.slice(index + 1)));
+                        }
                       }
                     } else { // 指す
                       setPieces(pieces.map((p) => {
