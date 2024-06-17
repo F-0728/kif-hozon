@@ -2,8 +2,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Initial Setup/環境構築
 
-`npm run dev` でゲーム画面に遷移します([http://localhost:3000](http://localhost:3000))．
-(必要に応じて`npm upgrade`してください)
+### 前提条件
+- **Dockerをインストールしていること!**
+
+初回起動時、`docker-compose up -d --build`でビルドと起動をし、
+[http://localhost:3000](http://localhost:3000)でゲーム画面に遷移します。
+<br>終了時には`docker-compose down`でコンテナを終了します。
+
+再度コンテナを起動する際は`docker-compose up -d`で起動することができます。
+<br>Dockerのことでわからないことがあったら、[@ryosuke0121](https://github.com/ryosuke0121)をメンションするなりしてなんでも聞いてください
 
 ## For those who commit to this repository/コミットしてくれる人へ！
 
